@@ -1,10 +1,11 @@
 
 
-export const CitiesFilter = (countries ) => {
-    const citiesAndCountry = countries.data.flatMap((country) => 
-    country.cities.map((city) => `${city}, ${country.country}`)
-);
-console.log(citiesAndCountry);
-
-return citiesAndCountry;
-};
+export const citiesFilter = (countries) => {
+    const citiesAndCountry = countries.flatMap((country) =>
+      country.cities.map((city) => `${city}, ${country.country}`)
+    );
+    console.log(citiesAndCountry);
+  
+    return citiesAndCountry;
+  };
+  
