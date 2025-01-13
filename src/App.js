@@ -143,7 +143,7 @@ function App() {
                 </div>
               ))
             ) : (
-              <p className="no-results">No results found.</p>
+              <p className="no-results">No Results Found.</p>
             )}
           </div>
         )}

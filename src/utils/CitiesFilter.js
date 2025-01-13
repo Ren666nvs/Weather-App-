@@ -9,3 +9,4 @@ export const citiesFilter = (countries) => {
     return citiesAndCountry;
   };
   
+  
