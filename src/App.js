@@ -101,13 +101,6 @@ function App() {
   const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [cities, setCities] = useState([]);
-  const [isDay, setIsDay] = useState(true); // Өдөр шөнө байгааг динамик тодорхойлох
-
-  useEffect(() => {
-    const currentHour = new Date().getHours(); 
-    // 6:00 - 18:00 цагийн хооронд өдөр байна
-    setIsDay(currentHour >= 6 && currentHour < 17);
-  }, []);
 
   const fetchData = async () => {
     setLoading(true);
@@ -148,36 +141,46 @@ function App() {
     setCountriesSearch(event.target.value);
   };
 
-  const currentDate = new Date().toLocaleDateString(); // Өнөөдрийн огноог авах
-
+  
   return (
-    <div className={`app ${isDay ? "day" : "night"}`}>
+    <div className="app">
       <header className="header">
         <input
           type="text"
           value={countriesSearch}
           onChange={handleChange}
-          placeholder="Улс эсвэл хот хайх..."
+          placeholder="Search Country..."
           className="search-bar"
         />
-        <p className="date">{currentDate}</p>
+      
       </header>
 
       <main className="main">
-        <div className={`weather-card ${isDay ? "day-card" : "night-card"}`}>
-          <img
-            src={isDay ? sunIcon : moonIcon}
-            alt="weather-icon"
-            className="weather-icon"
-          />
-          <h1 className="temperature">{isDay ? "-16.9°" : "-25.2°"}</h1>
-          <p className="description">{isDay ? "Sunny" : "Clear Night"}</p>
+        <div className="weather-cards">
+          <div className="weather-card day-card">
+            <img
+              src={sunIcon}
+              alt="sun-icon"
+              className="weather-icon"
+            />
+            <h1 className="temperature">-16.9°</h1>
+            <p className="description">Sunny</p>
+          </div>
+          <div className="weather-card night-card">
+            <img
+              src={moonIcon}
+              alt="moon-icon"
+              className="weather-icon"
+            />
+            <h1 className="temperature">-25.2°</h1>
+            <p className="description">Clear Night</p>
+          </div>
         </div>
+
         
-        {/* Хотуудыг харуулах */}
         <div className="cities-list">
           {loading ? (
-            <p>Татаж байна...</p>
+            <p>Loading...</p>
           ) : (
             <div>
               {filteredData.length > 0 ? (
@@ -187,21 +190,12 @@ function App() {
                   </div>
                 ))
               ) : (
-                <p className="no-results">Үр дүн олдсонгүй.</p>
+                <p className="no-results">not found.</p>
               )}
             </div>
           )}
         </div>
       </main>
-
-      <footer className="footer">
-        <nav>
-          <i className="icon">🏠</i>
-          <i className="icon">📍</i>
-          <i className="icon">❤️</i>
-          <i className="icon">👤</i>
-        </nav>
-      </footer>
     </div>
   );
 }
