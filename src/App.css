@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-bar {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+
+.date {
+  font-size: 14px;
+  color: #555;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+
+.weather-card {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.night-card {
+  background-color: #333;
+  color: white;
+}
+
+.weather-icon {
+  width: 100px;
+  height: 100px;
+}
+
+.temperature {
+  font-size: 48px;
+  margin: 10px 0;
+}
+
+.description {
+  font-size: 18px;
+}
+
+.footer {
+  padding: 10px 20px;
+  background-color: #eee;
+}
+
+.footer .icon {
+  margin: 0 10px;
+  font-size: 24px;
+}
+
+
+  
+  
