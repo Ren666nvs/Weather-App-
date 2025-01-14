@@ -1,6 +1,6 @@
 import "./index.css";
-import { citiesFilter } from "./utils/CitiesFilter";
 import { useState, useEffect, useCallback } from "react";
+import { citiesFilter } from "./utils/CitiesFilter";
 
 function App() {
   const [countriesSearch, setCountriesSearch] = useState("");
