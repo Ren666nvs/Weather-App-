@@ -25,16 +25,16 @@ body {
 }
 
 .day-card {
-  background-color: #f0e68c;
+  background-color: white;
 }
 
 .night-card {
-  background-color: #2f4f4f;
+  background-color: black;
 }
 
 .weather-icon {
-  width: 50px;
-  height: 50px;
+  width: 274px;
+  height: 274px;
 }
 
 .temperature {
@@ -50,7 +50,9 @@ body {
   padding: 20px;
 }
 
+.search-bar {
+  font-size: 32px;
+  border-radius: 20px;
+}
 
-
-  
   

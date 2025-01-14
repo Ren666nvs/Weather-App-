@@ -151,6 +151,7 @@ function App() {
           onChange={handleChange}
           placeholder="Search Country..."
           className="search-bar"
+          
         />
       
       </header>
