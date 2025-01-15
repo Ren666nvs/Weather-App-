@@ -1,227 +1,45 @@
-import "./index.css";
-import { useState, useEffect, useCallback } from "react";
-import { citiesFilter } from "./utils/CitiesFilter";
-// import moonIcon from "./assets/moon.png";
-// import sunIcon from "./assets/sun.png";
-function App() {
-  const [countriesSearch, setCountriesSearch] = useState("");
-  const [filteredData, setFilteredData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [cities, setCities] = useState([]);
+import './App.css';
+import {components} from "./components/LeftSide" ;
+import {components} from "./components/RightSide" ; 
+import {components} from "./components/Search" ; 
+import { useEffect, useState } from 'react';
 
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(
-        "https://countriesnow.space/api/v0.1/countries"
-      );
-      const result = await response.json();
-      const countriesAndCity = citiesFilter(result.data);
-      setCities(countriesAndCity);
-      setFilteredData(countriesAndCity);
-    } catch (error) {
-      console.error("Error", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+ function App = ()  {
+  const [selectedCity, setSelectedCity] = useState("Ulaanbaatar")
+  const [weatherLoading, setWeatherLoading] = useState(false);
+  const [weather, setWeather] = useState({});
 
-  const filterData = useCallback(() => {
-    setFilteredData(
-      cities.filter((city) =>
-        city.toLowerCase().startsWith(countriesSearch.toLowerCase())
-      )
-    );
-  }, [cities, countriesSearch]);
+  const getWeather = async () => {
+    setWeatherLoading(true);
+  
+    try{
+const response = await fetch (
+  "https://countriesnow.space/api/v0.1/countries"
 
-  useEffect(() => {
-    filterData();
-  }, [filterData]);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const handleChange = (event) => {
-    setCountriesSearch(event.target.value);
-  };
-}
-//   return (
-//     <div className="app">
-//    <div className="container">
-//   {/* <img src="sun.png" alt="Sun" />
-
-//   <img src="moon.png" alt="Moon" /> */}
-
-//   {/* <input
-//     type="text"
-//     value={countriesSearch}
-//     onChange={handleChange}
-//     placeholder="Search for a country or city..."
-//     className="input"
-//   />
-// </div>
-
-//         {loading ? (
-//           <p>Loading...</p>
-//         ) : (
-//           <div>
-//             {filteredData.length > 0 ? (
-//               filteredData.map((city, index) => (
-//                 <div key={index} className="city-item">
-//                   {city}
-//                 </div>
-//               ))
-//             ) : (
-//               <p className="no-results">No Results Found.</p>
-//             )}
-//           </div>
-//         )}
-//       </div> */}
-
-//   );
-// }
-return (
-<div>
-  <div>
-    <input 
-    disabled={loading}
-    onChange={handleChange}
-    placeholder="Search Country"
-    value={countriesSearch}
-    />
-  </div>
-  {loading && <p>Loading</p>}
-<div>
-{countriesSearch.length > 0 && 
-  filteredData.map(city, index) => {
-    return (
-      <div onClick={() => hanleCityClick(city)} key={key}>
-        {city}
-      </div>
-    );
-  })}
-
-<div/>
-<div/>
 );
+
+const result = await response.json();
+console.log(result);
+const weatherData = {
+  max_c: result.forecast[0].day.maxtemp_c,
+  min_c: result.forecast[0].day.mintemp_c,
+  condition: result.forecast[0].day.condition.text,
+  date: result.forecast.forecastday[0].date,
 };
 
-export default App;
-
-        
-
-
-
-{/* // import React, { useState, useEffect, useCallback } from "react";
-// import "./App.css";
-// import sunIcon from "./assets/sun.png";
-// import moonIcon from "./assets/moon.png";
-// import { citiesFilter } from "./utils/CitiesFilter";
-// const weatherApiKey = 
-// function App() { */}
-{/* //   const [countriesSearch, setCountriesSearch] = useState("");
-//   const [filteredData, setFilteredData] = useState([]);
-//   const [loading, setLoading] = useState(false);
-//   const [cities, setCities] = useState([]);
-
-//   const fetchData = async () => { */}
-{/* //     setLoading(true);
-//     try { */}
-{/* //       const response = await fetch("https://countriesnow.space/api/v0.1/countries");
-//       const result = await response.json();
-//       const citiesAndCountry = citiesFilter(result.data); 
-//       setCities(citiesAndCountry); 
-//       setFilteredData(citiesAndCountry); 
-//     } catch (error) {
-//       console.error("Error", error);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   const filterData = useCallback(() => {
-//     if (countriesSearch === "") {
-//       setFilteredData(cities); 
-//     } else {
-//       setFilteredData(
-//         cities.filter((city) =>
-//           city.toLowerCase().startsWith(countriesSearch.toLowerCase()) 
-//         )
-//       );
-//     }
-//   }, [cities, countriesSearch]);
-
-//   useEffect(() => {
-//     filterData();
-//   }, [filterData]);
-
-//   useEffect(() => {
-//     fetchData();
-//   }, []);
-
-//   const handleChange = (event) => {
-//     setCountriesSearch(event.target.value);
-//   };
-
-  
-//   return (
-//     <div className="app">
-//       <header className="header">
-//         <input
-//           type="text"
-//           value={countriesSearch}
-//           onChange={handleChange}
-//           placeholder="Search Country..."
-//           className="search-bar"
-          
-//         />
-      
-//       </header>
-
-//       <main className="main">
-//         <div className="weather-cards">
-//           <div className="weather-card day-card">
-//             <img
-//               src={sunIcon}
-//               alt="sun-icon"
-//               className="weather-icon"
-//             />
-//             <h1 className="temperature">-16.9°</h1>
-//             <p className="description">Sunny</p>
-//           </div>
-//           <div className="weather-card night-card">
-//             <img
-//               src={moonIcon}
-//               alt="moon-icon"
-//               className="weather-icon"
-//             />
-//             <h1 className="temperature">-25.2°</h1>
-//             <p className="description">Clear Night</p>
-//           </div>
-//         </div>
-
-        
-//         <div className="cities-list">
-//           {loading ? (
-//             <p>Loading...</p>
-//           ) : (
-//             <div>
-//               {filteredData.length > 0 ? (
-//                 filteredData.map((city, index) => (
-//                   <div key={index} className="city-item">
-//                     {city}
-//                   </div>
-//                 ))
-//               ) : (
-//                 <p className="no-results">not found.</p>
-//               )}
-//             </div>
-//           )}
-//         </div>
-//       </main>
-//     </div>
-//   );
-// }
-
-// export default App; */}
+setWeather(weather.data);
+    } catch (error) {
+      console.log("Error", error);
+    } finally {
+      setWeatherLoading(false)
+    }
+setWeatherLoading(false);
+    } catch (error){
+      console.log("Error", error);
+      setWeatherLoading(false)
+    }
+  };
+  useEffect(() => {
+    getWeather();
+  })
+}
