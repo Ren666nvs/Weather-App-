@@ -1,10 +1,10 @@
 import './App.css';
-import {components} from "./components/LeftSide" ;
-import {components} from "./components/RightSide" ; 
-import {components} from "./components/Search" ; 
+import {components, LeftSide} from "./components/LeftSide" ;
+import {components, RightSide} from "./components/RightSide" ; 
+import {components, Search} from "./components/Search" ; 
 import { useEffect, useState } from 'react';
-
- function App = ()  {
+const weatherApiKey = ""
+ function App()  {
   const [selectedCity, setSelectedCity] = useState("Ulaanbaatar")
   const [weatherLoading, setWeatherLoading] = useState(false);
   const [weather, setWeather] = useState({});
@@ -12,14 +12,14 @@ import { useEffect, useState } from 'react';
   const getWeather = async () => {
     setWeatherLoading(true);
   
-    try{
+    try {
 const response = await fetch (
   "https://countriesnow.space/api/v0.1/countries"
-
+{ method: "get", headers: { "Content-Type" : "application/json"} }
 );
 
 const result = await response.json();
-console.log(result);
+
 const weatherData = {
   max_c: result.forecast[0].day.maxtemp_c,
   min_c: result.forecast[0].day.mintemp_c,
@@ -27,19 +27,26 @@ const weatherData = {
   date: result.forecast.forecastday[0].date,
 };
 
-setWeather(weather.data);
+setWeather(weatherData);
     } catch (error) {
       console.log("Error", error);
     } finally {
       setWeatherLoading(false)
     }
-setWeatherLoading(false);
-    } catch (error){
-      console.log("Error", error);
-      setWeatherLoading(false)
-    }
   };
   useEffect(() => {
     getWeather();
-  })
+  }, [selectedCity]);
+
+
+  return (
+    <div className='App'>
+      {weatherLoading && <p>weather loading...</p>}
+      <Search setSelectedCity={setSelectedCity} />
+      <LeftSide weather={weather} />
+      <RightSide weather={weather} />
+    </div>
+  );
 }
+
+  export default App;
