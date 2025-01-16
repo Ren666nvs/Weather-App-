@@ -49,6 +49,8 @@
 // }
 
 //   export default App;
+
+
 import "./App.css";
 import { LeftSide } from "./components/LeftSide";
 import { RightSide } from "./components/RightSide";
@@ -98,13 +100,18 @@ function App() {
 
   return (
     <div className="App">
-      {/* <h1 className="text-2xl font-bold bg-red-600">Weather</h1> */}
-      {weatherLoading && <p>Weather loading...</p>}
-       <img src={"./Subtract.png"} alt="side-img" /> 
-      <Search setSelectedCity={setSelectedCity} />
-      <LeftSide weather={weather} />
-      <RightSide weather={weather} />
+    {weatherLoading && <p className="text-center">Weather loading...</p>}
+    <div className="flex items-start justify-between px-4">
+      <div className="flex-1">
+        <Search setSelectedCity={setSelectedCity} />
+        <LeftSide weather={weather} />
+        <RightSide weather={weather} />
+      </div>
+      <div className="ml-4">
+        <img src={"./Subtract.png"} alt="side-img"  />
+      </div>
     </div>
+  </div>
   );
 }
 

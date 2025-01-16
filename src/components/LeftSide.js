@@ -1,12 +1,19 @@
+
 import React from "react";
 
 export const LeftSide = (props) => {
   const { weather } = props;
-  console.log(weather);
+  if (!weather || !weather.max_c) {
+    return <div>Weather data is not available</div>;
+  }
 
   return (
     <div>
-      <div>temp {weather.max_c}</div>
+      <div>Max Temp: {weather.max_c}°C</div>
+      <div>Min Temp: {weather.min_c}°C</div>
+      <div>Condition: {weather.condition}</div>
+      <div>Date: {weather.date}</div>
     </div>
   );
 };
+
