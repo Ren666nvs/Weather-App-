@@ -54,7 +54,8 @@ import { LeftSide } from "./components/LeftSide";
 import { RightSide } from "./components/RightSide";
 import { Search } from "./components/Search";
 import { useEffect, useState } from "react";
-
+// import moonIcon from "./assets/moon.png";
+// import sunIcon from "./assets/sun.png";
 const weatherApiKey = "3fdecdde0fa448dc8c122147251501";
 
 function App() {
@@ -97,7 +98,9 @@ function App() {
 
   return (
     <div className="App">
+      {/* <h1 className="text-2xl font-bold bg-red-600">Weather</h1> */}
       {weatherLoading && <p>Weather loading...</p>}
+       <img src={"./Subtract.png"} alt="side-img" /> 
       <Search setSelectedCity={setSelectedCity} />
       <LeftSide weather={weather} />
       <RightSide weather={weather} />

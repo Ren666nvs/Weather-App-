@@ -1,5 +1,12 @@
-import React from 'react'
+import React from "react";
 
-export const LeftSide = () => {
-    return <div>LeftSide</div>;
+export const LeftSide = (props) => {
+  const { weather } = props;
+  console.log(weather);
+
+  return (
+    <div>
+      <div>temp {weather.max_c}</div>
+    </div>
+  );
 };
