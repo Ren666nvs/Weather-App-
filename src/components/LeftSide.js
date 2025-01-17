@@ -1,4 +1,3 @@
-
 import React from "react";
 
 export const LeftSide = (props) => {
@@ -16,5 +15,3 @@ export const LeftSide = (props) => {
     </div>
   );
 };
-
-  
