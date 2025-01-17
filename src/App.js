@@ -100,13 +100,35 @@ function App() {
               </div>
             </div>
           </section>
-          
+          <section className="relative flex flex-1 items-center justify-center">
+          <div className="relative flex w-[567px] justify-center z-10">
+          <div className="z-20 w-103 h-207 rounded-10.5 overflow-hidden shadow-lg bg-[#111827]/75">
+          <div className="space-y-12 px-10 py-14 backdrop-blur-lg">
+                  <div className="flex justify-between items-center">
+                    <div className="space-y-2">
+                    <h4 className="text-gray-400">{weather.date || "January 14, 2025"}</h4>
+                      <h2 className="h-12 text-5xl font-extrabold text-gray-900">{selectedCity}</h2>
+                    </div>
+                  </div>
+                  <img src="moon.png" alt="Night" />
+                </div>
+                <div className="px-12">
+                  <div className="text-transparent bg-clip-text font-extrabold text-[110px] -mt-10 bg-gradient-to-b from-black to-white">
+                    {weather.max_c}° / {weather.min_c}°
+                  </div>
+                  <h6 className="font-extrabold mb-12">{weather.condition || "Clear"}</h6>
+                </div>
+              </div>
+            </div>
+            </section>
         </div>
       </div>
-      <LeftSide weather={weather} />
-      <RightSide weather={weather} />
     </div>
   );
 }
+      
+      //  <LeftSide weather={weather} />
+      //  <RightSide weather={weather} />
+   
 
 export default App;
