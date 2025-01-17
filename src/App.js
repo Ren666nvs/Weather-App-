@@ -1,62 +1,9 @@
-// import './App.css';
-// import {components, LeftSide} from "./components/LeftSide" ;
-// import {components, RightSide} from "./components/RightSide" ;
-// import {components, Search} from "./components/Search" ;
-// import { useEffect, useState } from 'react';
-// const weatherApiKey = "3fdecdde0fa448dc8c122147251501"
-//  function App()  {
-//   const [selectedCity, setSelectedCity] = useState("Ulaanbaatar")
-//   const [weatherLoading, setWeatherLoading] = useState(false);
-//   const [weather, setWeather] = useState({});
 
-//   const getWeather = async () => {
-//     setWeatherLoading(true);
-
-//     try {
-// const response = await fetch (
-//   "https://countriesnow.space/api/v0.1/countries"
-// { method: "get", headers: { "Content-Type" : "application/json"} }
-// );
-
-// const result = await response.json();
-
-// const weatherData = {
-//   max_c: result.forecast[0].day.maxtemp_c,
-//   min_c: result.forecast[0].day.mintemp_c,
-//   condition: result.forecast[0].day.condition.text,
-//   date: result.forecast.forecastday[0].date,
-// };
-
-// setWeather(weatherData);
-//     } catch (error) {
-//       console.log("Error", error);
-//     } finally {
-//       setWeatherLoading(false)
-//     }
-//   };
-//   useEffect(() => {
-//     getWeather();
-//   }, [selectedCity]);
-
-//   return (
-//     <div className='App'>
-//       {weatherLoading && <p>weather loading...</p>}
-//       <Search setSelectedCity={setSelectedCity} />
-//       <LeftSide weather={weather} />
-//       <RightSide weather={weather} />
-//     </div>
-//   );
-// }
-
-//   export default App;
-
-
-// import "./App.css";
+import "./App.css";
 import { LeftSide } from "./components/LeftSide";
 import { RightSide } from "./components/RightSide";
+import { Search } from "./components/Search";
 import { useEffect, useState } from "react";
-import Search from './components/Search';
-
 const weatherApiKey = "3fdecdde0fa448dc8c122147251501";
 
 function App() {
@@ -100,16 +47,16 @@ function App() {
   return (
     <div className="bg-[#F3F4F6]">  
       <div className="relative flex w-screen h-screen items-center justify-center">
-        <Search setSelectedCity={setSelectedCity} />
-        <div className="absolute inset-0 z-10 flex items-center justify-center">
-          {/* Circles */}
-          {[1740, 1340, 940, 540, 340, 140].map((size, index) => (
-            <div
-              key={index}
-              className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-gray-300 rounded-full w-[${size}px] h-[${size}px]`}
-            />
-          ))}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-gray-300 rounded-full w-[140px] h-[140px]"></div>
+    
+      {weatherLoading && <p>Weather loading...</p>}
+      <Search setSelectedCity={setSelectedCity} />
+      <div className="absolute inset-0 z-10 flex items-center justify-center">
+      {[1740, 1340, 940, 540, 340, 140].map((size, index) => (
+         <div
+         className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-gray-300 rounded-full w-[${size}px] h-[${size}px]`}
+         />
+       ))}
+         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-gray-300 rounded-full w-[140px] h-[140px]"></div>
           <div className="flex items-center justify-center w-[140px] h-[140px] bg-[#F3F4F6] rounded-full gap-x-4">
             <div className="flex items-center justify-center">
               <div>
@@ -132,8 +79,7 @@ function App() {
           </div>
         </div>
         <div className="flex min-h-screen">
-          {/* Weather Card */}
-          <section className="relative flex flex-1 items-center justify-center">
+        <section className="relative flex flex-1 items-center justify-center">
             <div className="relative flex w-[567px] justify-center z-10">
               <div className="z-20 w-103 h-207 rounded-10.5 overflow-hidden shadow-lg bg-white/75">
                 <div className="space-y-12 px-10 py-14 backdrop-blur-lg">
@@ -154,30 +100,11 @@ function App() {
               </div>
             </div>
           </section>
-          {/* Night Weather Card */}
-          <section className="relative flex flex-1 items-center justify-center">
-            <div className="relative flex w-[567px] justify-center z-10">
-              <div className="z-20 w-103 h-207 rounded-10.5 overflow-hidden shadow-lg bg-[#111827]/75">
-                <div className="space-y-12 px-10 py-14 backdrop-blur-lg">
-                  <div className="flex justify-between items-center">
-                    <div className="space-y-2">
-                      <h4 className="text-gray-400">{weather.date || "January 14, 2025"}</h4>
-                      <h2 className="h-12 text-5xl font-extrabold text-gray-900">{selectedCity}</h2>
-                    </div>
-                  </div>
-                  <img src="moon.png" alt="Night" />
-                </div>
-                <div className="px-12">
-                  <div className="text-transparent bg-clip-text font-extrabold text-[110px] -mt-10 bg-gradient-to-b from-black to-white">
-                    {weather.max_c}° / {weather.min_c}°
-                  </div>
-                  <h6 className="font-extrabold mb-12">{weather.condition || "Clear"}</h6>
-                </div>
-              </div>
-            </div>
-          </section>
+          
         </div>
       </div>
+      <LeftSide weather={weather} />
+      <RightSide weather={weather} />
     </div>
   );
 }
