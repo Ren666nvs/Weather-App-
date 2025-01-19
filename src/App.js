@@ -109,7 +109,7 @@ function App() {
                   <div className="text-transparent bg-clip-text font-extrabold text-[110px] -mt-10 bg-gradient-to-b from-black to-white">
                     {weather.max_c}° 
                   </div>
-                  <h6 className="font-extrabold mb-12">
+                  <h6 className="font-extrabold mb-12 text-indigo-600" >
                     {weather.condition || "Sunny"}
                   </h6>
                 </div>
@@ -125,7 +125,7 @@ function App() {
                       <h4 className="text-gray-400">
                         {weather.date || "January 14, 2025"}
                       </h4>
-                      <h2 className="h-12 text-5xl font-extrabold text-gray-900">
+                      <h2 className="h-12 text-5xl font-extrabold text-white">
                         {selectedCity}
                       </h2>
                     </div>
@@ -136,7 +136,7 @@ function App() {
                   <div className="text-transparent bg-clip-text font-extrabold text-[110px] -mt-10 bg-gradient-to-b from-black to-white">
                      {weather.min_c}° 
                   </div>
-                  <h6 className="font-extrabold mb-12">
+                  <h6 className="font-extrabold mb-12 text-orange-400">
                     {weather.condition || "Clear"}
                   </h6>
                 </div>
