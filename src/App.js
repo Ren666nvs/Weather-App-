@@ -1,6 +1,6 @@
 import "./App.css";
-import { LeftSide } from "./components/LeftSide";
-import { RightSide } from "./components/RightSide";
+// import { LeftSide }from "./components/LeftSide";
+// import { RightSide } from "./components/RightSide";
 import { Search } from "./components/Search";
 import { useEffect, useState } from "react";
 const weatherApiKey = "3fdecdde0fa448dc8c122147251501";
@@ -107,7 +107,7 @@ function App() {
                 </div>
                 <div className="px-12">
                   <div className="text-transparent bg-clip-text font-extrabold text-[110px] -mt-10 bg-gradient-to-b from-black to-white">
-                    {weather.max_c}° / {weather.min_c}°
+                    {weather.max_c}° 
                   </div>
                   <h6 className="font-extrabold mb-12">
                     {weather.condition || "Sunny"}
@@ -134,7 +134,7 @@ function App() {
                 </div>
                 <div className="px-12">
                   <div className="text-transparent bg-clip-text font-extrabold text-[110px] -mt-10 bg-gradient-to-b from-black to-white">
-                    {weather.max_c}° / {weather.min_c}°
+                     {weather.min_c}° 
                   </div>
                   <h6 className="font-extrabold mb-12">
                     {weather.condition || "Clear"}
