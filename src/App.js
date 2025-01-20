@@ -57,6 +57,7 @@ function App() {
           
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-gray-300 rounded-full w-[140px] h-[140px]"></div>
           <div className="flex items-center justify-center w-[140px] h-[140px] bg-[#F3F4F6] rounded-full gap-x-4">
+          <div class="before:absolute before:-top-[114px] before:left-[67px] before:w-10 before:h-14 before:bg-[#F3F4F6]">
             <div className="flex items-center justify-center">
               
               <div>
@@ -89,6 +90,7 @@ function App() {
               </div>
             </div>
           </div>
+          </div>
         </div>
         <div className="flex min-h-screen">
           <section className="relative flex flex-1 items-center justify-center">
@@ -103,6 +105,18 @@ function App() {
                       <h2 className="h-12 text-5xl font-extrabold text-gray-900">
                         {selectedCity}
                       </h2>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-map-pin text-gray-600">
+                          <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0">
+                            </path>
+                            <circle cx="12"
+                             cy="10"
+                              r="3">
+                                </circle>
+                                </svg>
+                     
+
                     </div>
                   </div>
                   <img src="./sun.png" alt="Sunny" />
