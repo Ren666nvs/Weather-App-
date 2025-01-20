@@ -54,9 +54,11 @@ function App() {
               className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-gray-300 rounded-full w-[${size}px] h-[${size}px]`}
             />
           ))}
+          
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-gray-300 rounded-full w-[140px] h-[140px]"></div>
           <div className="flex items-center justify-center w-[140px] h-[140px] bg-[#F3F4F6] rounded-full gap-x-4">
             <div className="flex items-center justify-center">
+              
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +111,7 @@ function App() {
                   <div className="text-transparent bg-clip-text font-extrabold text-[110px] -mt-10 bg-gradient-to-b from-black to-white">
                     {weather.max_c}° 
                   </div>
-                  <h6 className="font-extrabold mb-12 text-indigo-600" >
+                  <h6 className="font-extrabold mb-12 text-indigo-400" >
                     {weather.condition || "Sunny"}
                   </h6>
                 </div>
@@ -143,6 +145,7 @@ function App() {
               </div>
             </div>
           </section>
+          
         </div>
       </div>
     </div>
